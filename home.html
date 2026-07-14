@@ -3,341 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CinePulse | Iconic Cinema</title>
-    <style>
-        /* --- Reset & Global Variables --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --bg-color: #08080c;
-            --card-bg: #12121a;
-            --accent-color: #e50914; /* Cinematic Red */
-            --text-main: #ffffff;
-            --text-muted: #a0a0b0;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
-
-        /* --- Header / Navigation --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 6%;
-            position: absolute;
-            width: 100%;
-            z-index: 10;
-            background: linear-gradient(to bottom, rgba(8,8,12,0.8), transparent);
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .logo span {
-            color: var(--accent-color);
-        }
-
-        nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 15px;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover, nav a.active {
-            color: var(--accent-color);
-        }
-
-        /* --- Hero Showcase Section (Interstellar) --- */
-        .hero {
-            position: relative;
-            height: 75vh;
-            display: flex;
-            align-items: center;
-            padding: 0 6%;
-            background: linear-gradient(to right, rgba(8, 8, 12, 0.95) 40%, rgba(8, 8, 12, 0.3)), 
-                        url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .hero-content {
-            max-width: 650px;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 6px 12px;
-            font-size: 12px;
-            font-weight: 700;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .hero h1 {
-            font-size: 56px;
-            margin: 15px 0 10px 0;
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -1px;
-        }
-
-        .hero-meta {
-            font-size: 14px;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 14px 32px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            background-color: #ff1e2b;
-            box-shadow: 0 8px 20px rgba(229, 9, 20, 0.4);
-        }
-
-        /* --- Movie Grid Section --- */
-        .main-container {
-            padding: 80px 6%;
-        }
-
-        .section-title {
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: 40px;
-            position: relative;
-            letter-spacing: -0.5px;
-        }
-
-        .section-title span {
-            color: var(--accent-color);
-        }
-
-        .movie-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 40px 30px;
-        }
-
-        /* --- Individual Movie Card --- */
-        .movie-card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-
-        .movie-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.7);
-        }
-
-        .poster-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 145%; /* Cinematic Poster Aspect Ratio */
-            overflow: hidden;
-            background-color: #1f1f2e;
-        }
-
-        .poster-wrapper img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .movie-card:hover .poster-wrapper img {
-            transform: scale(1.06);
-        }
-
-        .rating-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(8, 8, 12, 0.85);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            padding: 5px 9px;
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #ffd700;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .movie-info {
-            padding: 20px 15px;
-        }
-
-        .movie-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            color: var(--text-main);
-        }
-
-        .movie-meta {
-            font-size: 14px;
-            color: var(--text-muted);
-            display: flex;
-            justify-content: space-between;
-            font-weight: 500;
-        }
-
-        .movie-genre {
-            color: var(--accent-color);
-        }
-
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 50px 0;
-            color: var(--text-muted);
-            font-size: 14px;
-            border-top: 1px solid #12121a;
-            margin-top: 60px;
-            letter-spacing: 0.5px;
-        }
-    </style>
+    <title>Flavor Haven Restaurant</title>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
-        <div class="logo">Cine<span>Pulse</span></div>
+        <h1>🍽️ Flavor Haven Restaurant</h1>
         <nav>
-            <a href="#" class="active">Home</a>
-            <a href="#">Movies</a>
-            <a href="#">Top Rated</a>
-            <a href="#">Watchlist</a>
+            <a href="#">Home</a> |
+            <a href="#">About</a> |
+            <a href="#">Menu</a> |
+            <a href="#">Gallery</a> |
+            <a href="#">Contact</a>
         </nav>
+        <hr>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <span class="hero-badge">Featured Masterpiece</span>
-            <h1>Interstellar</h1>
-            <div class="hero-meta">Sci-Fi &amp; Adventure &bull; 9.0 IMDb &bull; 2h 49m</div>
-            <p>When Earth becomes uninhabitable, a team of explorers and pilots undertake the most important mission in human history: traveling beyond this galaxy to discover whether mankind has a future among the stars.</p>
-            <a href="#" class="btn">Play Trailer</a>
-        </div>
+    <!-- Hero Section -->
+    <section>
+        <h2>Welcome to Flavor Haven</h2>
+        <p>Experience delicious food and a cozy dining atmosphere.</p>
+        <button>View Menu</button>
+        <button>Book a Table</button>
     </section>
 
-    <main class="main-container">
-        <h2 class="section-title">All-Time <span>Favorites</span></h2>
-        
-        <div class="movie-grid">
-            
-            <div class="movie-card">
-                <div class="rating-badge">★ 8.8</div>
-                <div class="poster-wrapper">
-                    <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=600&auto=format&fit=crop" alt="Inception Poster Image">
-                </div>
-                <div class="movie-info">
-                    <div class="movie-title">Inception</div>
-                    <div class="movie-meta">
-                        <span class="movie-genre">Sci-Fi / Action</span>
-                        <span>2010</span>
-                    </div>
-                </div>
-            </div>
+    <hr>
 
-            <div class="movie-card">
-                <div class="rating-badge">★ 9.0</div>
-                <div class="poster-wrapper">
-                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600&auto=format&fit=crop" alt="The Dark Knight Poster Image">
-                </div>
-                <div class="movie-info">
-                    <div class="movie-title">The Dark Knight</div>
-                    <div class="movie-meta">
-                        <span class="movie-genre">Action / Crime</span>
-                        <span>2008</span>
-                    </div>
-                </div>
-            </div>
+    <!-- Featured Dishes -->
+    <section>
+        <h2>Featured Dishes</h2>
 
-            <div class="movie-card">
-                <div class="rating-badge">★ 8.6</div>
-                <div class="poster-wrapper">
-                    <img src="https://images.unsplash.com/photo-1547234935-80c7145ec969?q=80&w=600&auto=format&fit=crop" alt="Dune Part Two Poster Image">
-                </div>
-                <div class="movie-info">
-                    <div class="movie-title">Dune: Part Two</div>
-                    <div class="movie-meta">
-                        <span class="movie-genre">Sci-Fi / Epic</span>
-                        <span>2024</span>
-                    </div>
-                </div>
-            </div>
+        <article>
+            <h3>🍕 Margherita Pizza</h3>
+            <p>Fresh cheese, tomato sauce, and basil.</p>
+            <p><strong>Price:</strong> ₹299</p>
+        </article>
 
-            <div class="movie-card">
-                <div class="rating-badge">★ 8.0</div>
-                <div class="poster-wrapper">
-                    <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=600&auto=format&fit=crop" alt="Blade Runner 2049 Poster Image">
-                </div>
-                <div class="movie-info">
-                    <div class="movie-title">Blade Runner 2049</div>
-                    <div class="movie-meta">
-                        <span class="movie-genre">Sci-Fi / Drama</span>
-                        <span>2017</span>
-                    </div>
-                </div>
-            </div>
+        <article>
+            <h3>🍔 Classic Burger</h3>
+            <p>Juicy grilled burger with fries.</p>
+            <p><strong>Price:</strong> ₹249</p>
+        </article>
 
-        </div>
-    </main>
+        <article>
+            <h3>🍝 White Sauce Pasta</h3>
+            <p>Creamy pasta with herbs and cheese.</p>
+            <p><strong>Price:</strong> ₹279</p>
+        </article>
+    </section>
 
+    <hr>
+
+    <!-- About -->
+    <section>
+        <h2>About Us</h2>
+        <p>
+            We serve fresh, tasty, and high-quality food prepared by
+            experienced chefs. Our goal is to provide the best dining
+            experience for every customer.
+        </p>
+    </section>
+
+    <hr>
+
+    <!-- Contact -->
+    <section>
+        <h2>Contact Us</h2>
+        <p>📍 123 Food Street, Surat</p>
+        <p>📞 +91 98765 43210</p>
+        <p>📧 info@flavorhaven.com</p>
+    </section>
+
+    <hr>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 CinePulse Inc. Built for ultimate movie enthusiasts.</p>
+        <p>&copy; 2026 Flavor Haven Restaurant. All Rights Reserved.</p>
     </footer>
 
 </body>
-</html>
+  </html>
