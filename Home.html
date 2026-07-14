@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SneakerX - Premium Sneakers</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f7f7f7;
+    color:#222;
+}
+
+/* Header */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:#111;
+    color:#fff;
+    position:sticky;
+    top:0;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+    color:#ff4d4d;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin:0 15px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#ff4d4d;
+}
+
+.icons{
+    font-size:22px;
+}
+
+/* Hero */
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:80px 8%;
+    background:linear-gradient(135deg,#111,#333);
+    color:#fff;
+}
+
+.hero-text{
+    max-width:500px;
+}
+
+.hero-text h1{
+    font-size:55px;
+    line-height:1.2;
+}
+
+.hero-text p{
+    margin:20px 0;
+    color:#ddd;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 30px;
+    background:#ff4d4d;
+    color:#fff;
+    text-decoration:none;
+    border-radius:30px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#ff2222;
+}
+
+.hero img{
+    width:500px;
+    max-width:100%;
+}
+
+/* Products */
+
+.products{
+    padding:60px 8%;
+}
+
+.products h2{
+    text-align:center;
+    font-size:36px;
+    margin-bottom:40px;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card-content h3{
+    margin-bottom:10px;
+}
+
+.price{
+    color:#ff4d4d;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.card button{
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#111;
+    color:#fff;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.card button:hover{
+    background:#ff4d4d;
+}
+
+/* Banner */
+
+.banner{
+    margin:60px 8%;
+    background:#111;
+    color:#fff;
+    padding:50px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.banner h2{
+    font-size:40px;
+}
+
+.banner p{
+    margin:15px 0;
+}
+
+/* Footer */
+
+footer{
+    background:#111;
+    color:#aaa;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+@media(max-width:900px){
+
+.hero{
+    flex-direction:column;
+    text-align:center;
+}
+
+.hero img{
+    margin-top:40px;
+}
+
+.hero-text h1{
+    font-size:42px;
+}
+
+header{
+    flex-direction:column;
+    gap:15px;
+}
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <div class="logo">SneakerX</div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Men</a>
+        <a href="#">Women</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="icons">🛒</div>
+</header>
+
+<section class="hero">
+
+<div class="hero-text">
+<h1>Step Into Style</h1>
+
+<p>
+Discover premium sneakers with unbeatable comfort and modern design.
+Find your perfect pair today.
+</p>
+
+<a href="#" class="btn">Shop Now</a>
+</div>
+
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800" alt="Sneakers">
+
+</section>
+
+<section class="products">
+
+<h2>Featured Sneakers</h2>
+
+<div class="product-grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600" alt="">
+<div class="card-content">
+<h3>Air Runner</h3>
+<div class="price">$129</div>
+<button>Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600" alt="">
+<div class="card-content">
+<h3>Street Classic</h3>
+<div class="price">$149</div>
+<button>Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600" alt="">
+<div class="card-content">
+<h3>Urban Sport</h3>
+<div class="price">$169</div>
+<button>Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600" alt="">
+<div class="card-content">
+<h3>Elite Max</h3>
+<div class="price">$199</div>
+<button>Add to Cart</button>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="banner">
+<h2>🔥 Summer Sale - Up to 50% OFF</h2>
+<p>Grab your favorite sneakers before the offer ends.</p>
+<a href="#" class="btn">Explore Deals</a>
+</section>
+
+<footer>
+© 2026 SneakerX. All Rights Reserved.
+</footer>
+
+</body>
+</html>
