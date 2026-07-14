@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Website</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#f5f5f5;
+        }
+
+        header{
+            background:#222;
+            color:white;
+            padding:15px 50px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .logo{
+            font-size:28px;
+            font-weight:bold;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin-left:20px;
+            font-size:18px;
+        }
+
+        nav a:hover{
+            color:#00bcd4;
+        }
+
+        .hero{
+            height:80vh;
+            background:url("https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1600") center/cover;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:white;
+            text-align:center;
+        }
+
+        .hero h1{
+            font-size:50px;
+        }
+
+        .hero p{
+            margin:15px 0;
+            font-size:20px;
+        }
+
+        .btn{
+            background:#00bcd4;
+            color:white;
+            padding:12px 25px;
+            text-decoration:none;
+            border-radius:5px;
+        }
+
+        .products{
+            padding:50px;
+        }
+
+        .products h2{
+            text-align:center;
+            margin-bottom:30px;
+        }
+
+        .card-container{
+            display:flex;
+            justify-content:center;
+            gap:25px;
+            flex-wrap:wrap;
+        }
+
+        .card{
+            width:280px;
+            background:white;
+            border-radius:10px;
+            overflow:hidden;
+            box-shadow:0 5px 10px rgba(0,0,0,.2);
+        }
+
+        .card img{
+            width:100%;
+            height:200px;
+            object-fit:cover;
+        }
+
+        .card h3{
+            padding:10px;
+        }
+
+        .card p{
+            padding:0 10px 15px;
+        }
+
+        .card button{
+            width:100%;
+            padding:12px;
+            border:none;
+            background:#00bcd4;
+            color:white;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        footer{
+            background:#222;
+            color:white;
+            text-align:center;
+            padding:20px;
+            margin-top:40px;
+        }
+    </style>
+
+</head>
+<body>
+
+<header>
+
+<div class="logo">RentHub</div>
+
+<nav>
+<a href="home.html">Home</a>
+<a href="product.html">Products</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+</header>
+
+<section class="hero">
+<div>
+<h1>Rent Anything Anytime</h1>
+<p>Find the best rental products at affordable prices.</p>
+<a href="product.html" class="btn">Browse Products</a>
+</div>
+</section>
+
+<section class="products">
+
+<h2>Featured Rentals</h2>
+
+<div class="card-container">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800">
+<h3>Car Rental</h3>
+<p>Starting from ₹999/day</p>
+<button>Rent Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800">
+<h3>Bike Rental</h3>
+<p>Starting from ₹399/day</p>
+<button>Rent Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800">
+<h3>House Rental</h3>
+<p>Starting from ₹5000/month</p>
+<button>Rent Now</button>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 RentHub. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
