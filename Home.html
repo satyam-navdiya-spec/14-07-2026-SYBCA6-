@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasty Bites Restaurant</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f8f8f8;
+color:#333;
+}
+
+header{
+height:100vh;
+background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80");
+background-size:cover;
+background-position:center;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+position:fixed;
+width:100%;
+background:rgba(0,0,0,.5);
+backdrop-filter:blur(5px);
+}
+
+.logo{
+color:white;
+font-size:30px;
+font-weight:bold;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-size:18px;
+transition:.3s;
+}
+
+nav ul li a:hover{
+color:#ff9800;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+padding:20px;
+}
+
+.hero h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:22px;
+margin-bottom:30px;
+}
+
+.hero button{
+padding:15px 35px;
+border:none;
+background:#ff9800;
+color:white;
+font-size:18px;
+border-radius:30px;
+cursor:pointer;
+transition:.3s;
+}
+
+.hero button:hover{
+background:#ff6600;
+}
+
+section{
+padding:80px 10%;
+}
+
+h2{
+text-align:center;
+font-size:40px;
+margin-bottom:40px;
+}
+
+.menu{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card h3{
+padding:15px;
+}
+
+.card p{
+padding:0 15px 20px;
+color:#ff6600;
+font-weight:bold;
+font-size:20px;
+}
+
+.about{
+text-align:center;
+line-height:1.8;
+font-size:18px;
+}
+
+.contact{
+text-align:center;
+}
+
+.contact button{
+padding:15px 30px;
+margin-top:20px;
+border:none;
+background:#ff9800;
+color:white;
+font-size:18px;
+border-radius:30px;
+cursor:pointer;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:40px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+nav{
+flex-direction:column;
+}
+
+nav ul{
+margin-top:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+nav ul li{
+margin:10px;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+<nav>
+<div class="logo">🍽 Tasty Bites</div>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<div class="hero">
+<h1>Welcome To Tasty Bites</h1>
+<p>Fresh • Delicious • Healthy Food Every Day</p>
+
+<button onclick="orderNow()">Order Now</button>
+</div>
+
+</header>
+
+<section id="menu">
+
+<h2>Our Special Menu</h2>
+
+<div class="menu">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80">
+<h3>Italian Pizza</h3>
+<p>$15</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80">
+<h3>Cheese Burger</h3>
+<p>$12</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80">
+<h3>Healthy Salad</h3>
+<p>$10</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<h2>About Us</h2>
+
+<div class="about">
+We prepare fresh and delicious meals using high-quality ingredients.
+Our experienced chefs serve tasty food with excellent customer service.
+Your satisfaction is our priority.
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact Us</h2>
+
+<div class="contact">
+<p>📍 New York, USA</p>
+<p>📞 +1 234 567 890</p>
+<p>📧 tastybites@email.com</p>
+
+<button onclick="bookTable()">Book a Table</button>
+</div>
+
+</section>
+
+<footer>
+© 2026 Tasty Bites Restaurant | All Rights Reserved
+</footer>
+
+<script>
+function orderNow(){
+alert("🍕 Thanks for choosing Tasty Bites!");
+}
+
+function bookTable(){
+alert("✅ Table Booking Coming Soon!");
+}
+</script>
+
+</body>
+</html>
