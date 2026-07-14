@@ -1,6 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Champion Cricket Academy</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+}
+
+/* Navbar */
+
+header{
+    background:#0b3d0b;
+    color:white;
+    padding:15px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+    color:#FFD700;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:25px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#FFD700;
+}
+
+/* Hero */
+
+.hero{
+    height:90vh;
+    background:url("https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1500&q=80") center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero-content{
+    background:rgba(0,0,0,.6);
+    padding:40px;
+    border-radius:10px;
+    color:white;
+}
+
+.hero h1{
+    font-size:55px;
+}
+
+.hero p{
+    margin:20px 0;
+    font-size:20px;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    background:#FFD700;
+    color:black;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:white;
+}
+
+/* Sections */
+
+section{
+    padding:70px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:40px;
+    color:#0b3d0b;
+    margin-bottom:40px;
+}
+
+/* About */
+
+.about{
+    display:flex;
+    gap:40px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.about img{
+    width:450px;
+    max-width:100%;
+    border-radius:10px;
+}
+
+.about-text{
+    flex:1;
+}
+
+.about-text p{
+    line-height:1.8;
+    color:#555;
+    font-size:18px;
+}
+
+/* Cards */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    color:#0b3d0b;
+    margin:15px 0;
+}
+
+.card p{
+    color:#555;
+}
+
+/* CTA */
+
+.cta{
+    background:#0b3d0b;
+    color:white;
+    text-align:center;
+}
+
+.cta h2{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+/* Footer */
+
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+@media(max-width:768px){
+
+header{
+    flex-direction:column;
+}
+
+nav ul{
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:15px;
+}
+
+.hero h1{
+    font-size:38px;
+}
+
+.section-title{
+    font-size:32px;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+<div class="logo">🏏 Champion Cricket Academy</div>
+
+<nav>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Programs</a></li>
+<li><a href="#">Coaches</a></li>
+<li><a href="#">Gallery</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</nav>
+
+</header>
+
+<!-- Hero -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Train Like A Champion</h1>
+
+<p>Professional Cricket Coaching for Beginners to Advanced Players.</p>
+
+<a href="#" class="btn">Join Now</a>
+
+</div>
+
+</section>
+
+<!-- About -->
+
+<section>
+
+<h2 class="section-title">About Us</h2>
+
+<div class="about">
+
+<img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=800&q=80">
+
+<div class="about-text">
+
+<p>
+Champion Cricket Academy provides world-class coaching with certified
+trainers, modern practice nets, bowling machines, fitness sessions,
+and match exposure. Our goal is to help young cricketers reach district,
+state, national, and international levels.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Programs -->
+
+<section>
+
+<h2 class="section-title">Training Programs</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🏏 Batting Coaching</h3>
+<p>Improve technique, power hitting, timing and shot selection.</p>
+</div>
+
+<div class="card">
+<h3>🎯 Bowling Coaching</h3>
+<p>Fast bowling, spin bowling, accuracy and pace development.</p>
+</div>
+
+<div class="card">
+<h3>🧤 Wicket Keeping</h3>
+<p>Professional keeping drills, reflex training and match practice.</p>
+</div>
+
+<div class="card">
+<h3>💪 Fitness Training</h3>
+<p>Strength, agility, endurance and injury prevention sessions.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- Why Choose -->
+
+<section>
+
+<h2 class="section-title">Why Choose Us?</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>✔ ICC Certified Coaches</h3>
+</div>
+
+<div class="card">
+<h3>✔ Turf & Cement Nets</h3>
+</div>
+
+<div class="card">
+<h3>✔ Bowling Machines</h3>
+</div>
+
+<div class="card">
+<h3>✔ Tournament Exposure</h3>
+</div>
+
+</div>
+
+</section>
+
+<!-- Coaches -->
+
+<section>
+
+<h2 class="section-title">Our Coaches</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Coach Rahul Sharma</h3>
+<p>Former Ranji Trophy Player</p>
+</div>
+
+<div class="card">
+<h3>Coach Amit Patel</h3>
+<p>Level-2 Certified Cricket Coach</p>
+</div>
+
+<div class="card">
+<h3>Coach Vikram Singh</h3>
+<p>Strength & Conditioning Expert</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+<h2>Ready to Start Your Cricket Journey?</h2>
+
+<p style="margin-bottom:30px;font-size:20px;">
+Admissions Open for Boys & Girls (Age 6+)
+</p>
+
+<a href="#" class="btn">Enroll Today</a>
+
+</section>
+
+<footer>
+
+<p>© 2026 Champion Cricket Academy | All Rights Reserved.</p>
+
+</footer>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CinePulse | Iconic Cinema</title>
