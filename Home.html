@@ -1,507 +1,323 @@
-```html
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA | Luxury Estate</title>
-
-    <!-- Google Fonts: Cormorant Garamond (Serif/Cinematic) & Montserrat (Clean Sans) -->
+    <title>The Roasted Bean | Artisanal Coffee Shop</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans-Serif) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                        serif: ['Cormorant Garamond', 'serif'],
-                    },
-                    colors: {
-                        neutral: {
-                            850: '#1f1f1f',
-                            900: '#121212',
-                            950: '#0a0a0a',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Elegant Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Base Reset & Aesthetics */
+        /* Base styles matching the prompt requirements */
         body {
-            background-color: #0a0a0a;
-            color: #f5f5f5;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF7;
+            color: #2C1B14;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
         }
 
-        /* Hide Scrollbar for cleaner look */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #555; }
+        /* Hide default cursor on desktop for custom cursor feature */
+        @media (min-width: 768px) {
+            html, body, a, button, input, select, textarea {
+                cursor: none !important;
+            }
+        }
 
-        /* Custom Cursor for Gallery */
+        /* Custom Cursor Styles */
         .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #2C1B14;
             position: fixed;
             top: 0;
             left: 0;
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            opacity: 0;
-            transform: scale(0.5);
-            transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
-        }
-
-        .cursor-dot.active {
-            opacity: 1;
-            transform: scale(1);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Swiper overrides */
-        .gallery-wrapper {
-            cursor: none; /* Hide default cursor */
-        }
-        .gallery-wrapper * {
-            cursor: none !important; /* Ensure children also hide cursor */
-        }
-        
-        .swiper-slide {
-            height: auto;
-            display: flex;
-            transition: opacity 0.3s ease;
-        }
-        
-        .swiper-slide-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .swiper-slide:hover .swiper-slide-image {
-            transform: scale(1.05);
-        }
-
-        /* Interactive inputs */
-        .glass-input {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            color: white;
-            padding: 0.5rem 0;
-            transition: border-color 0.3s ease;
-        }
-        .glass-input:focus {
-            outline: none;
-            border-color: white;
-        }
-        .glass-input::-webkit-calendar-picker-indicator {
-            filter: invert(1);
-            cursor: pointer;
-        }
-
-        /* Tactile Button Hover */
-        .btn-tactile {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .btn-tactile::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 150%;
-            height: 150%;
-            background: rgba(255,255,255,0.1);
-            transform: translate(-50%, -50%) scale(0);
             border-radius: 50%;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
         }
-        .btn-tactile:hover::before {
-            transform: translate(-50%, -50%) scale(1);
+
+        .cursor-circle {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #D4A373;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out, background-color 0.3s, border-color 0.3s, width 0.3s, height 0.3s;
+            mix-blend-mode: normal;
         }
-        .btn-tactile > span {
-            position: relative;
-            z-index: 1;
+
+        /* Hover States for the Custom Cursor */
+        body.cursor-hover .cursor-dot {
+            width: 4px;
+            height: 4px;
+            background-color: #D4A373;
+        }
+
+        body.cursor-hover .cursor-circle {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(212, 163, 115, 0.1);
+            border-color: #D4A373;
+            mix-blend-mode: multiply;
         }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-white selection:text-black">
+<body class="overflow-x-hidden selection:bg-[#D4A373]/30">
 
-    <!-- Custom Cursor -->
-    <div class="cursor-dot" id="custom-cursor">Drag</div>
+    <!-- Custom Cursor Elements (Hidden on mobile via JS check) -->
+    <div class="cursor-dot hidden md:block" id="custom-dot"></div>
+    <div class="cursor-circle hidden md:block" id="custom-circle"></div>
 
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-500 py-6 px-6 md:px-12 flex justify-between items-center">
-        <a href="#" class="font-serif text-2xl tracking-widest uppercase text-white hover:opacity-70 transition-opacity">Aura</a>
-        <div class="hidden md:flex space-x-10 text-sm tracking-widest uppercase font-light">
-            <a href="#about" class="hover:text-neutral-400 transition-colors">The Estate</a>
-            <a href="#gallery" class="hover:text-neutral-400 transition-colors">Gallery</a>
-            <a href="#amenities" class="hover:text-neutral-400 transition-colors">Amenities</a>
-        </div>
-        <button class="btn-tactile border border-white/30 px-6 py-3 text-sm tracking-wider uppercase hover:bg-white hover:text-black transition-colors duration-500">
-            <span>Reserve</span>
-        </button>
-    </nav>
+    <!-- 1. Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 px-6 py-4 md:px-12 flex justify-between items-center bg-transparent backdrop-blur-xs" id="main-header">
+        <a href="#" class="text-2xl font-bold tracking-wide text-[#2C1B14] hover-target">
+            The <span class="italic font-normal text-[#D4A373]">Roasted</span> Bean
+        </a>
+        
+        <nav class="hidden md:flex space-x-8 items-center">
+            <a href="#menu" class="hover-target text-sm font-medium uppercase tracking-wider text-[#2C1B14]/80 hover:text-[#2C1B14] transition-colors">Menu</a>
+            <a href="#about" class="hover-target text-sm font-medium uppercase tracking-wider text-[#2C1B14]/80 hover:text-[#2C1B14] transition-colors">Our Story</a>
+            <a href="#footer" class="hover-target text-sm font-medium uppercase tracking-wider text-[#2C1B14]/80 hover:text-[#2C1B14] transition-colors">Locations</a>
+        </nav>
 
-    <!-- Hero Section -->
-    <header class="hero relative w-full h-screen overflow-hidden">
-        <!-- Parallax Background -->
-        <div class="hero-bg absolute w-full h-[120%] -top-[10%] left-0 will-change-transform">
-            <div class="absolute inset-0 bg-black/40 z-10"></div> <!-- Dark Overlay -->
-            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop" 
-                 alt="Luxury Estate Exterior" 
-                 class="w-full h-full object-cover">
-        </div>
-
-        <!-- Hero Content -->
-        <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4 pt-20">
-            <span class="text-sm md:text-base tracking-[0.3em] uppercase mb-6 text-neutral-300 reveal-up">Exclusive Retreat</span>
-            <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl font-light mb-8 reveal-up" style="line-height: 0.9;">
-                The Epitome of <br> <i class="text-neutral-400">Seclusion</i>
-            </h1>
-        </div>
-
-        <!-- Glassmorphism Booking Widget -->
-        <div class="absolute bottom-0 left-0 w-full z-30 px-4 md:px-12 pb-12 translate-y-8 opacity-0" id="booking-widget">
-            <div class="max-w-5xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-12 items-end">
-                <div class="w-full md:w-1/4 flex flex-col">
-                    <label class="text-xs uppercase tracking-widest text-neutral-400 mb-2">Check In</label>
-                    <input type="date" class="glass-input text-lg">
-                </div>
-                <div class="w-full md:w-1/4 flex flex-col">
-                    <label class="text-xs uppercase tracking-widest text-neutral-400 mb-2">Check Out</label>
-                    <input type="date" class="glass-input text-lg">
-                </div>
-                <div class="w-full md:w-1/4 flex flex-col">
-                    <label class="text-xs uppercase tracking-widest text-neutral-400 mb-2">Guests</label>
-                    <select class="glass-input text-lg appearance-none bg-transparent cursor-pointer">
-                        <option value="1" class="text-black">2 Guests</option>
-                        <option value="2" class="text-black">4 Guests</option>
-                        <option value="3" class="text-black">6+ Guests</option>
-                    </select>
-                </div>
-                <div class="w-full md:w-1/4">
-                    <button class="w-full bg-white text-black py-4 px-6 text-sm tracking-widest uppercase font-medium hover:bg-neutral-200 transition-colors">
-                        Check Availability
-                    </button>
-                </div>
-            </div>
+        <div>
+            <a href="#menu" class="hover-target hidden sm:inline-block bg-[#2C1B14] text-[#FDFBF7] text-xs font-semibold uppercase tracking-widest px-6 py-3 rounded-none hover:bg-[#D4A373] transition-colors duration-300 shadow-xs">
+                Order Online
+            </a>
         </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about" class="py-32 px-6 md:px-12 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
-            <div class="space-y-8 reveal-up">
-                <h2 class="font-serif text-4xl md:text-6xl font-light">Where architecture <br>meets nature.</h2>
-                <p class="text-neutral-400 leading-relaxed font-light text-lg">
-                    Nestled in the heart of untouched wilderness, Aura is a sanctuary of modern luxury. Every line, every material, and every view has been meticulously crafted to blur the boundaries between indoors and out. Experience a tactile world of polished stone, warm woods, and expansive glass that invites the landscape inside.
+    <!-- 2. Hero Section -->
+    <section class="relative h-screen w-full flex items-center justify-center text-center bg-cover bg-center px-4" style="background-image: linear-gradient(rgba(253, 251, 247, 0.65), rgba(253, 251, 247, 0.85)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=2000');">
+        <div class="max-w-4xl space-y-6">
+            <span class="text-xs font-semibold uppercase tracking-widest text-[#D4A373] block animate-fade-in">Artisanal Coffee Roasters</span>
+            <h1 class="text-5xl md:text-7xl font-bold text-[#2C1B14] leading-tight tracking-tight">
+                Crafting Moments,<br>One Bean at a Time.
+            </h1>
+            <p class="text-md md:text-lg text-[#2C1B14]/70 max-w-xl mx-auto font-light">
+                Welcome to your daily sanctuary. We source single-origin organic beans micro-roasted weekly for an unparalleled sensory experience.
+            </p>
+            <div class="pt-4">
+                <a href="#menu" class="hover-target inline-block border border-[#2C1B14] text-[#2C1B14] font-medium tracking-wide px-8 py-3.5 hover:bg-[#2C1B14] hover:text-[#FDFBF7] transition-all duration-300">
+                    Explore Our Menu <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Bottom subtle anchor -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#2C1B14]/40 animate-bounce text-sm">
+            <span class="block tracking-widest uppercase text-[10px] mb-1">Scroll</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- 3. Featured Menu Section -->
+    <section id="menu" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="text-center max-w-xl mx-auto mb-16 space-y-3">
+            <span class="text-xs font-semibold uppercase tracking-widest text-[#D4A373]">Curated Selection</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-[#2C1B14]">Signature Specialties</h2>
+            <div class="w-12 h-[1px] bg-[#D4A373] mx-auto mt-4"></div>
+        </div>
+
+        <!-- 3-Card Minimalist Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            
+            <!-- Item 1 -->
+            <div class="group bg-white border border-[#2C1B14]/5 overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                <div class="overflow-hidden relative h-72">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=800" alt="Charcoal Latte" class="hover-target w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <span class="absolute top-4 right-4 bg-[#2C1B14] text-[#FDFBF7] text-xs px-3 py-1 font-serif italic">$6.50</span>
+                </div>
+                <div class="p-6 space-y-2 bg-[#FDFBF7]">
+                    <h3 class="text-xl font-bold text-[#2C1B14]">Activated Charcoal Latte</h3>
+                    <p class="text-sm text-[#2C1B14]/60 font-light">Espresso infused with activated coconut charcoal, organic honey, and steamed oat milk.</p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="group bg-white border border-[#2C1B14]/5 overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                <div class="overflow-hidden relative h-72">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=800" alt="Pistachio Croissant" class="hover-target w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <span class="absolute top-4 right-4 bg-[#2C1B14] text-[#FDFBF7] text-xs px-3 py-1 font-serif italic">$5.25</span>
+                </div>
+                <div class="p-6 space-y-2 bg-[#FDFBF7]">
+                    <h3 class="text-xl font-bold text-[#2C1B14]">Pistachio Cream Croissant</h3>
+                    <p class="text-sm text-[#2C1B14]/60 font-light">House-baked flaky pastry filled with a luxurious, velvety Sicilian pistachio cream filling.</p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="group bg-white border border-[#2C1B14]/5 overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                <div class="overflow-hidden relative h-72">
+                    <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=800" alt="Cold Brew" class="hover-target w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <span class="absolute top-4 right-4 bg-[#2C1B14] text-[#FDFBF7] text-xs px-3 py-1 font-serif italic">$5.75</span>
+                </div>
+                <div class="p-6 space-y-2 bg-[#FDFBF7]">
+                    <h3 class="text-xl font-bold text-[#2C1B14]">Nitro Maple Cold Brew</h3>
+                    <p class="text-sm text-[#2C1B14]/60 font-light">18-hour cold steeped brew charged with nitrogen, finished with pure Vermont maple syrup hint.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Brief Story Section for Layout Depth -->
+    <section id="about" class="bg-[#2C1B14] text-[#FDFBF7] py-20 px-6 md:px-12">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=1000" alt="Barista pouring coffee" class="w-full h-96 object-cover grayscale brightness-90">
+            </div>
+            <div class="w-full md:w-1/2 space-y-6">
+                <span class="text-xs uppercase tracking-widest text-[#D4A373] font-semibold">Our Philosophy</span>
+                <h2 class="text-4xl font-bold">Uncompromising Quality in Every Cup</h2>
+                <p class="text-sm font-light text-[#FDFBF7]/80 leading-relaxed">
+                    We believe coffee roasting is a precise marriage of science and sensory intuition. Ethically partnering with direct-trade family farmers ensures that our impact is as beautiful and sustainable as our flavor profiles.
                 </p>
-                <button class="btn-tactile inline-flex items-center space-x-3 text-sm uppercase tracking-widest pb-2 border-b border-white/30 hover:border-white transition-colors">
-                    <span>Discover the Story</span>
-                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </button>
-            </div>
-            <div class="relative h-[600px] overflow-hidden reveal-up">
-                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop" 
-                     alt="Interior Detail" 
-                     class="w-full h-full object-cover parallax-img">
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Carousel Section -->
-    <section id="gallery" class="py-24 overflow-hidden">
-        <div class="px-6 md:px-12 mb-16 flex justify-between items-end reveal-up">
-            <h2 class="font-serif text-5xl md:text-7xl font-light">The Spaces</h2>
-            <div class="hidden md:flex space-x-4">
-                <button class="swiper-btn-prev w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all">
-                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
-                </button>
-                <button class="swiper-btn-next w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all">
-                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Swiper Container with Custom Cursor Trigger Area -->
-        <div class="gallery-wrapper reveal-up relative">
-            <div class="swiper px-6 md:px-12 !pb-12">
-                <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide w-[85%] md:w-[45%] lg:w-[35%]">
-                        <div class="relative w-full aspect-[4/5] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2070&auto=format&fit=crop" alt="Living Room" class="swiper-slide-image">
-                            <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent">
-                                <h3 class="font-serif text-3xl mb-2">Grand Living</h3>
-                                <p class="text-sm tracking-wider text-neutral-300 uppercase">Panoramic Views</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Slide 2 -->
-                    <div class="swiper-slide w-[85%] md:w-[45%] lg:w-[35%]">
-                        <div class="relative w-full aspect-[4/5] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2067&auto=format&fit=crop" alt="Master Suite" class="swiper-slide-image">
-                            <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent">
-                                <h3 class="font-serif text-3xl mb-2">Master Suite</h3>
-                                <p class="text-sm tracking-wider text-neutral-300 uppercase">Tranquil Rest</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Slide 3 -->
-                    <div class="swiper-slide w-[85%] md:w-[45%] lg:w-[35%]">
-                        <div class="relative w-full aspect-[4/5] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" alt="Kitchen" class="swiper-slide-image">
-                            <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent">
-                                <h3 class="font-serif text-3xl mb-2">Chef's Kitchen</h3>
-                                <p class="text-sm tracking-wider text-neutral-300 uppercase">Culinary Excellence</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Slide 4 -->
-                    <div class="swiper-slide w-[85%] md:w-[45%] lg:w-[35%]">
-                        <div class="relative w-full aspect-[4/5] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?q=80&w=2070&auto=format&fit=crop" alt="Bathroom" class="swiper-slide-image">
-                            <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent">
-                                <h3 class="font-serif text-3xl mb-2">Spa Bath</h3>
-                                <p class="text-sm tracking-wider text-neutral-300 uppercase">Pure Relaxation</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="pt-2">
+                    <a href="#" class="hover-target text-sm font-medium border-b border-[#D4A373] text-[#D4A373] pb-1 hover:text-[#FDFBF7] hover:border-[#FDFBF7] transition-colors">Learn More About Direct Trade</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Amenities & Features -->
-    <section id="amenities" class="py-32 bg-neutral-950">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="text-center mb-24 reveal-up">
-                <span class="text-sm tracking-[0.3em] uppercase text-neutral-500 mb-4 block">Uncompromised Luxury</span>
-                <h2 class="font-serif text-4xl md:text-6xl font-light">Features & Amenities</h2>
+    <!-- 4. Footer -->
+    <footer id="footer" class="bg-[#1A100C] text-[#FDFBF7]/90 pt-16 pb-8 px-6 md:px-12 border-t border-[#2C1B14]/10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            
+            <!-- Column 1: Identity -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold text-[#FDFBF7]">The Roasted Bean</h3>
+                <p class="text-xs text-[#FDFBF7]/60 font-light max-w-xs leading-relaxed">
+                    Sourcing micro-lots of dynamic, high-scoring coffees served inside curated physical spaces meant for community.
+                </p>
+                <div class="flex space-x-4 pt-2">
+                    <a href="#" class="hover-target text-[#FDFBF7]/60 hover:text-[#D4A373] transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+                    <a href="#" class="hover-target text-[#FDFBF7]/60 hover:text-[#D4A373] transition-colors"><i class="fa-brands fa-facebook-f text-base"></i></a>
+                    <a href="#" class="hover-target text-[#FDFBF7]/60 hover:text-[#D4A373] transition-colors"><i class="fa-brands fa-pinterest text-lg"></i></a>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
-                <!-- Feature 1 -->
-                <div class="flex flex-col items-start reveal-up border-t border-white/10 pt-8">
-                    <i data-lucide="waves" class="w-8 h-8 mb-6 text-neutral-400"></i>
-                    <h3 class="text-xl font-medium mb-3">Infinity Pool</h3>
-                    <p class="text-neutral-400 font-light text-sm leading-relaxed">A 20-meter heated infinity pool blending seamlessly with the horizon line.</p>
-                </div>
-                <!-- Feature 2 -->
-                <div class="flex flex-col items-start reveal-up border-t border-white/10 pt-8" style="transition-delay: 100ms;">
-                    <i data-lucide="glass-water" class="w-8 h-8 mb-6 text-neutral-400"></i>
-                    <h3 class="text-xl font-medium mb-3">Wine Cellar</h3>
-                    <p class="text-neutral-400 font-light text-sm leading-relaxed">Climate-controlled tasting room stocked with rare vintages globally.</p>
-                </div>
-                <!-- Feature 3 -->
-                <div class="flex flex-col items-start reveal-up border-t border-white/10 pt-8" style="transition-delay: 200ms;">
-                    <i data-lucide="film" class="w-8 h-8 mb-6 text-neutral-400"></i>
-                    <h3 class="text-xl font-medium mb-3">Private Cinema</h3>
-                    <p class="text-neutral-400 font-light text-sm leading-relaxed">Immersive 4K projection and Dolby Atmos sound in a plush, soundproofed room.</p>
-                </div>
-                <!-- Feature 4 -->
-                <div class="flex flex-col items-start reveal-up border-t border-white/10 pt-8" style="transition-delay: 300ms;">
-                    <i data-lucide="plane" class="w-8 h-8 mb-6 text-neutral-400"></i>
-                    <h3 class="text-xl font-medium mb-3">Helipad Access</h3>
-                    <p class="text-neutral-400 font-light text-sm leading-relaxed">Arrive in absolute privacy and convenience with on-property landing capabilities.</p>
+            <!-- Column 2: Hours -->
+            <div class="space-y-3">
+                <h4 class="text-xs uppercase tracking-widest text-[#D4A373] font-semibold">Hours of Ritual</h4>
+                <ul class="text-xs space-y-2 font-light text-[#FDFBF7]/70">
+                    <li><strong class="font-medium text-[#FDFBF7]">Mon — Fri:</strong> 6:30 AM – 6:00 PM</li>
+                    <li><strong class="font-medium text-[#FDFBF7]">Sat — Sun:</strong> 7:00 AM – 7:00 PM</li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Address -->
+            <div class="space-y-3">
+                <h4 class="text-xs uppercase tracking-widest text-[#D4A373] font-semibold">Find Us</h4>
+                <p class="text-xs font-light text-[#FDFBF7]/70 leading-relaxed">
+                    428 Espresso Boulevard,<br>
+                    Suite 100 — Coffee District<br>
+                    Seattle, WA 98101
+                </p>
+            </div>
+
+            <!-- Column 4: Minimalist Map Placeholder -->
+            <div class="space-y-3">
+                <h4 class="text-xs uppercase tracking-widest text-[#D4A373] font-semibold">Location Map</h4>
+                <div class="w-full h-28 bg-[#2C1B14] relative overflow-hidden flex items-center justify-center border border-[#FDFBF7]/10">
+                    <!-- Minimalist geometric map aesthetic replacement -->
+                    <div class="absolute inset-0 opacity-15" style="background-image: radial-gradient(circle, #FDFBF7 1px, transparent 1px); background-size: 12px 12px;"></div>
+                    <div class="text-center z-10">
+                        <i class="fa-solid fa-location-dot text-[#D4A373] text-xl mb-1"></i>
+                        <span class="block text-[10px] uppercase tracking-widest text-[#FDFBF7]/50">View interactive map</span>
+                    </div>
                 </div>
             </div>
+
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="py-16 border-t border-white/10 text-center md:text-left px-6 md:px-12">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <h2 class="font-serif text-3xl uppercase tracking-widest">Aura</h2>
-            <div class="flex space-x-8 text-sm uppercase tracking-wider text-neutral-400">
-                <a href="#" class="hover:text-white transition-colors">Instagram</a>
-                <a href="#" class="hover:text-white transition-colors">Contact</a>
-                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+        <div class="max-w-7xl mx-auto pt-8 border-t border-[#FDFBF7]/5 flex flex-col sm:flex-row justify-between text-[11px] text-[#FDFBF7]/40 font-light gap-4">
+            <p>&copy; 2026 The Roasted Bean Coffee Roasters. All rights reserved.</p>
+            <div class="space-x-4">
+                <a href="#" class="hover-target hover:text-[#FDFBF7]">Privacy Policy</a>
+                <a href="#" class="hover-target hover:text-[#FDFBF7]">Terms of Service</a>
             </div>
-            <p class="text-xs text-neutral-600 uppercase tracking-widest">&copy; 2026 Aura Estate</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <!-- GSAP & ScrollTrigger -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+    <!-- Core Scripting Logic -->
     <script>
-        // 1. Initialize Icons
-        lucide.createIcons();
+        // --- 1. Custom Interactive Cursor Loop (LERP) ---
+        const dot = document.getElementById('custom-dot');
+        const circle = document.getElementById('custom-circle');
 
-        // 2. Setup GSAP ScrollTrigger
-        gsap.registerPlugin(ScrollTrigger);
+        // Mouse Coordinates
+        let mouseX = 0;
+        let mouseY = 0;
 
-        // 3. Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-neutral-950/80', 'backdrop-blur-md', 'border-b', 'border-white/10', 'py-4');
-                navbar.classList.remove('py-6');
-            } else {
-                navbar.classList.remove('bg-neutral-950/80', 'backdrop-blur-md', 'border-b', 'border-white/10', 'py-4');
-                navbar.classList.add('py-6');
-            }
+        // Visual position coordinates for smooth trailing
+        let circleX = 0;
+        let circleY = 0;
+
+        // Update target mouse vectors immediately
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Dot tracks 1:1 instantly
+            dot.style.left = mouseX + 'px';
+            dot.style.top = mouseY + 'px';
         });
 
-        // 4. Parallax Hero Background
-        gsap.to(".hero-bg", {
-            yPercent: 15,
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".hero",
-                start: "top top",
-                end: "bottom top",
-                scrub: true
-            }
-        });
+        // Continuous linear interpolation (Lerp) looping animation sequence
+        function animateCursor() {
+            // Adjust factor decimal to tweak latency/lag. Lower value = lazier trail.
+            const lerpFactor = 0.15; 
+            
+            circleX += (mouseX - circleX) * lerpFactor;
+            circleY += (mouseY - circleY) * lerpFactor;
 
-        // 5. Hero Content Load Animation
-        gsap.from(".hero-content .reveal-up", {
-            y: 30,
-            opacity: 0,
-            duration: 1.5,
-            stagger: 0.2,
-            ease: "power3.out",
-            delay: 0.2
-        });
+            circle.style.left = circleX + 'px';
+            circle.style.top = circleY + 'px';
 
-        gsap.to("#booking-widget", {
-            y: 0,
-            opacity: 1,
-            duration: 1.5,
-            ease: "power3.out",
-            delay: 0.8
-        });
+            requestAnimationFrame(animateCursor);
+        }
+        // Fire animation thread
+        requestAnimationFrame(animateCursor);
 
-        // 6. Global Reveal Animations on Scroll
-        gsap.utils.toArray('.reveal-up:not(.hero-content .reveal-up)').forEach(element => {
-            gsap.fromTo(element, 
-                { y: 50, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1.2,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: element,
-                        start: "top 85%", // Trigger when top of element hits 85% of viewport
-                        toggleActions: "play none none reverse"
-                    }
-                }
-            );
-        });
-
-        // Slight parallax on secondary images
-        gsap.utils.toArray('.parallax-img').forEach(img => {
-            gsap.to(img, {
-                yPercent: 15,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: img.parentElement,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: true
-                }
+        // --- 2. Interactive Magnetic/Hover States ---
+        const targets = document.querySelectorAll('.hover-target');
+        
+        targets.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                document.body.classList.add('cursor-hover');
+            });
+            element.addEventListener('mouseleave', () => {
+                document.body.classList.remove('cursor-hover');
             });
         });
 
-        // 7. Swiper Initialization
-        const swiper = new Swiper('.swiper', {
-            slidesPerView: 'auto',
-            spaceBetween: 20,
-            freeMode: true,
-            grabCursor: false, // We use custom cursor
-            navigation: {
-                nextEl: '.swiper-btn-next',
-                prevEl: '.swiper-btn-prev',
-            },
-            breakpoints: {
-                768: { spaceBetween: 30 },
-                1024: { spaceBetween: 40 }
+        // --- 3. Dynamic Sticky Header Optimization ---
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-[#FDFBF7]/95', 'shadow-xs', 'py-3');
+                header.classList.remove('bg-transparent', 'py-4');
+            } else {
+                header.classList.remove('bg-[#FDFBF7]/95', 'shadow-xs', 'py-3');
+                header.classList.add('bg-transparent', 'py-4');
             }
         });
-
-        // 8. Custom Cursor Logic for Gallery
-        const cursor = document.getElementById('custom-cursor');
-        const galleryWrapper = document.querySelector('.gallery-wrapper');
-
-        // Set initial transform state for GSAP
-        gsap.set(cursor, { xPercent: -50, yPercent: -50 });
-
-        // Fast setters for mouse movement
-        const setCursorX = gsap.quickSetter(cursor, "x", "px");
-        const setCursorY = gsap.quickSetter(cursor, "y", "px");
-
-        // Track mouse globally but only show cursor conditionally via CSS
-        window.addEventListener('mousemove', (e) => {
-            setCursorX(e.clientX);
-            setCursorY(e.clientY);
-        });
-
-        // Activate custom cursor when hovering over gallery
-        galleryWrapper.addEventListener('mouseenter', () => {
-            cursor.classList.add('active');
-        });
-
-        galleryWrapper.addEventListener('mouseleave', () => {
-            cursor.classList.remove('active');
-            cursor.innerText = "Drag"; // reset text
-        });
-
-        // Change text on mouse down/up inside gallery to feel tactile
-        galleryWrapper.addEventListener('mousedown', () => {
-            cursor.style.transform = "scale(0.8)";
-            cursor.innerText = "Hold";
-        });
-        
-        galleryWrapper.addEventListener('mouseup', () => {
-            cursor.style.transform = "scale(1)";
-            cursor.innerText = "Drag";
-        });
-
     </script>
 </body>
 </html>
-
-```
