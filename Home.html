@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bean Brew Cafe</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f8f4ef;
+    color:#333;
+}
+
+header{
+    background:#3e2723;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 10%;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#ffcc80;
+}
+
+.hero{
+    height:90vh;
+    background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+    url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-size:60px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:25px;
+}
+
+.btn{
+    background:#d2691e;
+    color:white;
+    text-decoration:none;
+    padding:15px 30px;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+section{
+    padding:70px 10%;
+}
+
+.title{
+    text-align:center;
+    font-size:35px;
+    margin-bottom:40px;
+}
+
+.menu{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card h3{
+    padding:15px;
+}
+
+.card p{
+    padding:0 15px 15px;
+}
+
+.about{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:40px;
+}
+
+.about img{
+    width:100%;
+    max-width:500px;
+    border-radius:15px;
+}
+
+.about-text{
+    flex:1;
+}
+
+.contact{
+    text-align:center;
+}
+
+.contact p{
+    margin:10px 0;
+    font-size:18px;
+}
+
+footer{
+    background:#3e2723;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">☕ Bean Brew</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Menu</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<div>
+<h1>Fresh Coffee Everyday</h1>
+<p>Enjoy Premium Coffee, Fresh Bakery & Delicious Snacks</p>
+<a href="#" class="btn">Order Now</a>
+</div>
+</section>
+
+<section>
+<h2 class="title">Our Special Menu</h2>
+
+<div class="menu">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600">
+<h3>Cappuccino</h3>
+<p>Rich espresso with steamed milk.</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600">
+<h3>Latte</h3>
+<p>Smooth coffee with creamy milk.</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=600">
+<h3>Sandwich</h3>
+<p>Fresh grilled sandwich with cheese.</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1551024709-8f23befc6cf7?w=600">
+<h3>Chocolate Cake</h3>
+<p>Soft and delicious chocolate cake.</p>
+</div>
+
+</div>
+</section>
+
+<section class="about">
+
+<img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800">
+
+<div class="about-text">
+<h2>About Our Cafe</h2>
+<br>
+<p>
+Welcome to Bean Brew Cafe. We serve freshly brewed coffee,
+homemade desserts, and delicious snacks in a warm and relaxing
+environment. Visit us for a perfect coffee experience.
+</p>
+</div>
+
+</section>
+
+<section class="contact">
+
+<h2 class="title">Contact Us</h2>
+
+<p>📍 123 Coffee Street, Your City</p>
+<p>📞 +91 98765 43210</p>
+<p>✉️ info@beanbrewcafe.com</p>
+
+</section>
+
+<footer>
+<p>© 2026 Bean Brew Cafe. All Rights Reserved.</p>
+</footer>
+
+</body>
+  </html>
