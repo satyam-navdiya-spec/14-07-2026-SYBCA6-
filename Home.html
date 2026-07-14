@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Hotel</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+header{
+    background:#222;
+    color:white;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:bold;
+}
+
+.hero{
+    background:url("https://images.unsplash.com/photo-1566073771259-6a8506099945") center/cover;
+    height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:55px;
+}
+
+.hero p{
+    font-size:22px;
+    margin:15px 0;
+}
+
+.btn{
+    background:orange;
+    color:white;
+    padding:12px 25px;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+.about{
+    padding:50px;
+    text-align:center;
+}
+
+.rooms{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    width:280px;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 0 10px gray;
+}
+
+.card img{
+    width:100%;
+}
+
+.card h3{
+    padding:10px;
+}
+
+.card p{
+    padding:0 10px 15px;
+}
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+<h2>Royal Hotel</h2>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Rooms</a>
+<a href="#">Services</a>
+<a href="#">Gallery</a>
+<a href="#">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<div>
+<h1>Welcome To Royal Hotel</h1>
+<p>Luxury Rooms & Best Services</p>
+<a href="#" class="btn">Book Now</a>
+</div>
+</section>
+
+<section class="about">
+<h2>About Our Hotel</h2>
+<br>
+<p>Enjoy luxury rooms, delicious food, free WiFi, swimming pool, and 24×7 customer service.</p>
+</section>
+
+<section class="rooms">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85" alt="Room">
+<h3>Deluxe Room</h3>
+<p>₹2500 / Night</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267" alt="Room">
+<h3>Luxury Room</h3>
+<p>₹4500 / Night</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c" alt="Room">
+<h3>Premium Suite</h3>
+<p>₹7000 / Night</p>
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 Royal Hotel | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
