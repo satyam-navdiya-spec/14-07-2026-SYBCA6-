@@ -98,5 +98,325 @@
         </tr>
     </table>
 
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Roasted Bean | Artisanal Coffee Shop</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans-Serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Elegant Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Base styles matching the prompt requirements */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF7;
+            color: #2C1B14;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Hide default cursor on desktop for custom cursor feature */
+        @media (min-width: 768px) {
+            html, body, a, button, input, select, textarea {
+                cursor: none !important;
+            }
+        }
+
+        /* Custom Cursor Styles */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #2C1B14;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        .cursor-circle {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #D4A373;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out, background-color 0.3s, border-color 0.3s, width 0.3s, height 0.3s;
+            mix-blend-mode: normal;
+        }
+
+        /* Hover States for the Custom Cursor */
+        body.cursor-hover .cursor-dot {
+            width: 4px;
+            height: 4px;
+            background-color: #D4A373;
+        }
+
+        body.cursor-hover .cursor-circle {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(212, 163, 115, 0.1);
+            border-color: #D4A373;
+            mix-blend-mode: multiply;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden selection:bg-[#D4A373]/30">
+
+    <!-- Custom Cursor Elements (Hidden on mobile via JS check) -->
+    <div class="cursor-dot hidden md:block" id="custom-dot"></div>
+    <div class="cursor-circle hidden md:block" id="custom-circle"></div>
+
+    <!-- 1. Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 px-6 py-4 md:px-12 flex justify-between items-center bg-transparent backdrop-blur-xs" id="main-header">
+        <a href="#" class="text-2xl font-bold tracking-wide text-[#2C1B14] hover-target">
+            The <span class="italic font-normal text-[#D4A373]">Roasted</span> Bean
+        </a>
+        
+        <nav class="hidden md:flex space-x-8 items-center">
+            <a href="#menu" class="hover-target text-sm font-medium uppercase tracking-wider text-[#2C1B14]/80 hover:text-[#2C1B14] transition-colors">Menu</a>
+            <a href="#about" class="hover-target text-sm font-medium uppercase tracking-wider text-[#2C1B14]/80 hover:text-[#2C1B14] transition-colors">Our Story</a>
+            <a href="#footer" class="hover-target text-sm font-medium uppercase tracking-wider text-[#2C1B14]/80 hover:text-[#2C1B14] transition-colors">Locations</a>
+        </nav>
+
+        <div>
+            <a href="#menu" class="hover-target hidden sm:inline-block bg-[#2C1B14] text-[#FDFBF7] text-xs font-semibold uppercase tracking-widest px-6 py-3 rounded-none hover:bg-[#D4A373] transition-colors duration-300 shadow-xs">
+                Order Online
+            </a>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section class="relative h-screen w-full flex items-center justify-center text-center bg-cover bg-center px-4" style="background-image: linear-gradient(rgba(253, 251, 247, 0.65), rgba(253, 251, 247, 0.85)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=2000');">
+        <div class="max-w-4xl space-y-6">
+            <span class="text-xs font-semibold uppercase tracking-widest text-[#D4A373] block animate-fade-in">Artisanal Coffee Roasters</span>
+            <h1 class="text-5xl md:text-7xl font-bold text-[#2C1B14] leading-tight tracking-tight">
+                Crafting Moments,<br>One Bean at a Time.
+            </h1>
+            <p class="text-md md:text-lg text-[#2C1B14]/70 max-w-xl mx-auto font-light">
+                Welcome to your daily sanctuary. We source single-origin organic beans micro-roasted weekly for an unparalleled sensory experience.
+            </p>
+            <div class="pt-4">
+                <a href="#menu" class="hover-target inline-block border border-[#2C1B14] text-[#2C1B14] font-medium tracking-wide px-8 py-3.5 hover:bg-[#2C1B14] hover:text-[#FDFBF7] transition-all duration-300">
+                    Explore Our Menu <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Bottom subtle anchor -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#2C1B14]/40 animate-bounce text-sm">
+            <span class="block tracking-widest uppercase text-[10px] mb-1">Scroll</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- 3. Featured Menu Section -->
+    <section id="menu" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="text-center max-w-xl mx-auto mb-16 space-y-3">
+            <span class="text-xs font-semibold uppercase tracking-widest text-[#D4A373]">Curated Selection</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-[#2C1B14]">Signature Specialties</h2>
+            <div class="w-12 h-[1px] bg-[#D4A373] mx-auto mt-4"></div>
+        </div>
+
+        <!-- 3-Card Minimalist Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            
+            <!-- Item 1 -->
+            <div class="group bg-white border border-[#2C1B14]/5 overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                <div class="overflow-hidden relative h-72">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=800" alt="Charcoal Latte" class="hover-target w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <span class="absolute top-4 right-4 bg-[#2C1B14] text-[#FDFBF7] text-xs px-3 py-1 font-serif italic">$6.50</span>
+                </div>
+                <div class="p-6 space-y-2 bg-[#FDFBF7]">
+                    <h3 class="text-xl font-bold text-[#2C1B14]">Activated Charcoal Latte</h3>
+                    <p class="text-sm text-[#2C1B14]/60 font-light">Espresso infused with activated coconut charcoal, organic honey, and steamed oat milk.</p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="group bg-white border border-[#2C1B14]/5 overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                <div class="overflow-hidden relative h-72">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=800" alt="Pistachio Croissant" class="hover-target w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <span class="absolute top-4 right-4 bg-[#2C1B14] text-[#FDFBF7] text-xs px-3 py-1 font-serif italic">$5.25</span>
+                </div>
+                <div class="p-6 space-y-2 bg-[#FDFBF7]">
+                    <h3 class="text-xl font-bold text-[#2C1B14]">Pistachio Cream Croissant</h3>
+                    <p class="text-sm text-[#2C1B14]/60 font-light">House-baked flaky pastry filled with a luxurious, velvety Sicilian pistachio cream filling.</p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="group bg-white border border-[#2C1B14]/5 overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                <div class="overflow-hidden relative h-72">
+                    <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=800" alt="Cold Brew" class="hover-target w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <span class="absolute top-4 right-4 bg-[#2C1B14] text-[#FDFBF7] text-xs px-3 py-1 font-serif italic">$5.75</span>
+                </div>
+                <div class="p-6 space-y-2 bg-[#FDFBF7]">
+                    <h3 class="text-xl font-bold text-[#2C1B14]">Nitro Maple Cold Brew</h3>
+                    <p class="text-sm text-[#2C1B14]/60 font-light">18-hour cold steeped brew charged with nitrogen, finished with pure Vermont maple syrup hint.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Brief Story Section for Layout Depth -->
+    <section id="about" class="bg-[#2C1B14] text-[#FDFBF7] py-20 px-6 md:px-12">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=1000" alt="Barista pouring coffee" class="w-full h-96 object-cover grayscale brightness-90">
+            </div>
+            <div class="w-full md:w-1/2 space-y-6">
+                <span class="text-xs uppercase tracking-widest text-[#D4A373] font-semibold">Our Philosophy</span>
+                <h2 class="text-4xl font-bold">Uncompromising Quality in Every Cup</h2>
+                <p class="text-sm font-light text-[#FDFBF7]/80 leading-relaxed">
+                    We believe coffee roasting is a precise marriage of science and sensory intuition. Ethically partnering with direct-trade family farmers ensures that our impact is as beautiful and sustainable as our flavor profiles.
+                </p>
+                <div class="pt-2">
+                    <a href="#" class="hover-target text-sm font-medium border-b border-[#D4A373] text-[#D4A373] pb-1 hover:text-[#FDFBF7] hover:border-[#FDFBF7] transition-colors">Learn More About Direct Trade</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Footer -->
+    <footer id="footer" class="bg-[#1A100C] text-[#FDFBF7]/90 pt-16 pb-8 px-6 md:px-12 border-t border-[#2C1B14]/10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            
+            <!-- Column 1: Identity -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold text-[#FDFBF7]">The Roasted Bean</h3>
+                <p class="text-xs text-[#FDFBF7]/60 font-light max-w-xs leading-relaxed">
+                    Sourcing micro-lots of dynamic, high-scoring coffees served inside curated physical spaces meant for community.
+                </p>
+                <div class="flex space-x-4 pt-2">
+                    <a href="#" class="hover-target text-[#FDFBF7]/60 hover:text-[#D4A373] transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+                    <a href="#" class="hover-target text-[#FDFBF7]/60 hover:text-[#D4A373] transition-colors"><i class="fa-brands fa-facebook-f text-base"></i></a>
+                    <a href="#" class="hover-target text-[#FDFBF7]/60 hover:text-[#D4A373] transition-colors"><i class="fa-brands fa-pinterest text-lg"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Hours -->
+            <div class="space-y-3">
+                <h4 class="text-xs uppercase tracking-widest text-[#D4A373] font-semibold">Hours of Ritual</h4>
+                <ul class="text-xs space-y-2 font-light text-[#FDFBF7]/70">
+                    <li><strong class="font-medium text-[#FDFBF7]">Mon — Fri:</strong> 6:30 AM – 6:00 PM</li>
+                    <li><strong class="font-medium text-[#FDFBF7]">Sat — Sun:</strong> 7:00 AM – 7:00 PM</li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Address -->
+            <div class="space-y-3">
+                <h4 class="text-xs uppercase tracking-widest text-[#D4A373] font-semibold">Find Us</h4>
+                <p class="text-xs font-light text-[#FDFBF7]/70 leading-relaxed">
+                    428 Espresso Boulevard,<br>
+                    Suite 100 — Coffee District<br>
+                    Seattle, WA 98101
+                </p>
+            </div>
+
+            <!-- Column 4: Minimalist Map Placeholder -->
+            <div class="space-y-3">
+                <h4 class="text-xs uppercase tracking-widest text-[#D4A373] font-semibold">Location Map</h4>
+                <div class="w-full h-28 bg-[#2C1B14] relative overflow-hidden flex items-center justify-center border border-[#FDFBF7]/10">
+                    <!-- Minimalist geometric map aesthetic replacement -->
+                    <div class="absolute inset-0 opacity-15" style="background-image: radial-gradient(circle, #FDFBF7 1px, transparent 1px); background-size: 12px 12px;"></div>
+                    <div class="text-center z-10">
+                        <i class="fa-solid fa-location-dot text-[#D4A373] text-xl mb-1"></i>
+                        <span class="block text-[10px] uppercase tracking-widest text-[#FDFBF7]/50">View interactive map</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 border-t border-[#FDFBF7]/5 flex flex-col sm:flex-row justify-between text-[11px] text-[#FDFBF7]/40 font-light gap-4">
+            <p>&copy; 2026 The Roasted Bean Coffee Roasters. All rights reserved.</p>
+            <div class="space-x-4">
+                <a href="#" class="hover-target hover:text-[#FDFBF7]">Privacy Policy</a>
+                <a href="#" class="hover-target hover:text-[#FDFBF7]">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core Scripting Logic -->
+    <script>
+        // --- 1. Custom Interactive Cursor Loop (LERP) ---
+        const dot = document.getElementById('custom-dot');
+        const circle = document.getElementById('custom-circle');
+
+        // Mouse Coordinates
+        let mouseX = 0;
+        let mouseY = 0;
+
+        // Visual position coordinates for smooth trailing
+        let circleX = 0;
+        let circleY = 0;
+
+        // Update target mouse vectors immediately
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Dot tracks 1:1 instantly
+            dot.style.left = mouseX + 'px';
+            dot.style.top = mouseY + 'px';
+        });
+
+        // Continuous linear interpolation (Lerp) looping animation sequence
+        function animateCursor() {
+            // Adjust factor decimal to tweak latency/lag. Lower value = lazier trail.
+            const lerpFactor = 0.15; 
+            
+            circleX += (mouseX - circleX) * lerpFactor;
+            circleY += (mouseY - circleY) * lerpFactor;
+
+            circle.style.left = circleX + 'px';
+            circle.style.top = circleY + 'px';
+
+            requestAnimationFrame(animateCursor);
+        }
+        // Fire animation thread
+        requestAnimationFrame(animateCursor);
+
+        // --- 2. Interactive Magnetic/Hover States ---
+        const targets = document.querySelectorAll('.hover-target');
+        
+        targets.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                document.body.classList.add('cursor-hover');
+            });
+            element.addEventListener('mouseleave', () => {
+                document.body.classList.remove('cursor-hover');
+            });
+        });
+
+        // --- 3. Dynamic Sticky Header Optimization ---
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-[#FDFBF7]/95', 'shadow-xs', 'py-3');
+                header.classList.remove('bg-transparent', 'py-4');
+            } else {
+                header.classList.remove('bg-[#FDFBF7]/95', 'shadow-xs', 'py-3');
+                header.classList.add('bg-transparent', 'py-4');
+            }
+        });
+    </script>
 </body>
 </html>
